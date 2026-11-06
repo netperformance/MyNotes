@@ -1,6 +1,10 @@
 # My Notes
 
 <p align="center">
+  <img src="docs/images/banner.jpg" alt="My Notes: notes for Android without account, cloud or permissions">
+</p>
+
+<p align="center">
   <b>Notes for Android that stay on your phone.</b><br>
   No account · No cloud · No permissions · English and German
 </p>
@@ -9,6 +13,14 @@
   <a href="#english">English</a> ·
   <a href="#deutsch">Deutsch</a> ·
   <a href="LICENSE">MIT License</a>
+</p>
+
+<p align="center">
+  <img src="docs/images/screenshots-list.png" width="100%" alt="Home screen with priority sections, the editor with bold, red and bullet lists, and the home screen in dark mode">
+</p>
+
+<p align="center">
+  <img src="docs/images/screenshots-settings.png" width="66%" alt="Settings with language, appearance, priorities, categories and backup">
 </p>
 
 ## English
