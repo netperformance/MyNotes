@@ -1,0 +1,23 @@
+// Lädt Pakete von Maven Central über den Spiegel von Google.
+// Maven Central lehnt häufige Abrufe aus Cloud-Rechenzentren mit "429 Too Many Requests" ab,
+// auch auf Umwegen über das Gradle-Plugin-Portal. Der Spiegel hat dieselben Dateien und wird
+// deshalb überall als erste Quelle eingetragen. Wird von scripts/build-apk.sh mitgegeben.
+def CENTRAL = 'https://repo.maven.apache.org/maven2'
+def MIRROR = 'https://maven-central.storage-download.googleapis.com/maven2/'
+
+def prefer = { RepositoryHandler repos ->
+  repos.maven { url MIRROR; name 'MavenCentralMirror' }
+  repos.configureEach { r ->
+    if (r instanceof MavenArtifactRepository && r.url.toString().startsWith(CENTRAL)) r.url = MIRROR
+  }
+}
+
+beforeSettings { settings ->
+  prefer(settings.pluginManagement.repositories)
+  prefer(settings.dependencyResolutionManagement.repositories)
+}
+
+allprojects {
+  prefer(buildscript.repositories)
+  prefer(repositories)
+}

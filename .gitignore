@@ -1,0 +1,67 @@
+# Was nicht auf GitHub gehört. Alles andere im Ordner ist Quellcode und wird gepusht.
+
+# Signierschlüssel und Passwort, niemals veröffentlichen
+signing/
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.pem
+*.mobileprovision
+keystore.properties
+
+# Fertige App (gehört in die Releases auf GitHub, nicht ins Repository)
+apk/
+*.apk
+*.aab
+
+# Pakete (werden mit npm install neu geladen)
+node_modules/
+
+# Android-Projekt (erzeugt build-apk.sh bei jedem Bau neu)
+/android
+/ios
+.kotlin/
+.gradle/
+.cxx/
+local.properties
+*.orig.*
+
+# Bau des eigenen Moduls
+modules/*/android/build/
+
+# Expo und Metro
+.expo/
+dist/
+web-build/
+expo-env.d.ts
+.metro-health-check*
+
+# Ablage der Claude App (Archive, Entwürfe)
+Claude outputs/
+
+# Archive und Zwischenstände
+*.tgz
+*.zip
+
+# Lokale Umgebungsvariablen
+.env
+.env*.local
+
+# TypeScript
+*.tsbuildinfo
+
+# Protokolle
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+*.log
+*.hprof
+
+# Betriebssystem und Editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/

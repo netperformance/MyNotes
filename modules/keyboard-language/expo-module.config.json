@@ -1,0 +1,6 @@
+{
+  "platforms": ["android"],
+  "android": {
+    "modules": ["de.aaron.keyboardlanguage.KeyboardLanguageModule"]
+  }
+}

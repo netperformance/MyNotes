@@ -1,0 +1,48 @@
+{
+  "expo": {
+    "name": "My Notes",
+    "slug": "mynotes",
+    "version": "1.1.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "backgroundColor": "#f4f5f2",
+    "platforms": [
+      "android"
+    ],
+    "android": {
+      "package": "de.aaron.mynotes",
+      "versionCode": 3,
+      "adaptiveIcon": {
+        "backgroundColor": "#1e9a5a",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "softwareKeyboardLayoutMode": "resize",
+      "predictiveBackGestureEnabled": false,
+      "allowBackup": false,
+      "blockedPermissions": [
+        "android.permission.INTERNET",
+        "android.permission.SYSTEM_ALERT_WINDOW",
+        "android.permission.READ_EXTERNAL_STORAGE",
+        "android.permission.WRITE_EXTERNAL_STORAGE",
+        "android.permission.VIBRATE"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 120,
+          "backgroundColor": "#f4f5f2"
+        }
+      ],
+      "expo-sqlite",
+      "expo-sharing",
+      "expo-font",
+      "./plugins/withPrivacy.js"
+    ]
+  }
+}
