@@ -1,6 +1,6 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons'
-import { useMemo, useState } from 'react'
-import { FlatList, KeyboardAvoidingView, Modal, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import { useMemo, useRef, useState } from 'react'
+import { FlatList, KeyboardAvoidingView, Modal, Pressable, ScrollView, StyleSheet, Text, View, type TextInputInstance } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import { COLORS } from '../domain/model'
 import { findMatches, snippet, type Range } from '../domain/text'
@@ -27,6 +27,7 @@ export function SearchScreen({ open, onClose, onOpenNote }: Props) {
   const store = useNotesStore()
   const { notes, categories } = useSnapshot()
   const [query, setQuery] = useState('')
+  const inputRef = useRef<TextInputInstance>(null)
   const [filter, setFilter] = useState<string>('all')
 
   const results = useMemo(() => {
@@ -76,7 +77,18 @@ export function SearchScreen({ open, onClose, onOpenNote }: Props) {
   if (!open) return null
 
   return (
-    <Modal visible animationType="fade" statusBarTranslucent navigationBarTranslucent onRequestClose={close}>
+    <Modal
+      visible
+      animationType="fade"
+      statusBarTranslucent
+      navigationBarTranslucent
+      onRequestClose={close}
+      // autoFocus reicht in einem Modal unter Android nicht: Das Feld ist dann zwar aktiv, die Tastatur bleibt aber zu.
+      // Erst wenn das Fenster sichtbar ist, öffnet focus() die Tastatur.
+      onShow={() => {
+        setTimeout(() => inputRef.current?.focus(), 100)
+      }}
+    >
       <KeyboardAvoidingView behavior="padding" style={[styles.fill, { backgroundColor: c.bg, paddingTop: insets.top + 8 }]}>
         <View style={styles.bar}>
           <Pressable onPress={close} style={styles.back} android_ripple={{ color: c.ripple, borderless: true, radius: 22 }} accessibilityRole="button" accessibilityLabel={t.back}>
@@ -85,13 +97,13 @@ export function SearchScreen({ open, onClose, onOpenNote }: Props) {
           <View style={[styles.field, { backgroundColor: c.card, borderColor: c.accent }]}>
             <MaterialIcons name="search" size={20} color={c.text3} />
             <Input
+              ref={inputRef}
               value={query}
               onChangeText={setQuery}
               placeholder={t.searchPlaceholder}
               placeholderTextColor={c.text3}
               cursorColor={c.accent}
               style={[styles.input, { color: c.text, fontSize: f(16) }]}
-              autoFocus
               autoCorrect={false}
               returnKeyType="search"
             />

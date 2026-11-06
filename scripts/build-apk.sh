@@ -96,7 +96,8 @@ let p = fs.readFileSync(propsFile, 'utf8')
 const set = (k, v) => { const re = new RegExp(`^${k}=.*$`, 'm'); p = re.test(p) ? p.replace(re, `${k}=${v}`) : p + `\n${k}=${v}` }
 set('reactNativeArchitectures', 'arm64-v8a')
 // Sparsam mit Arbeitsspeicher, damit der Bau auch auf Rechnern mit 8 GB nicht abbricht.
-set('org.gradle.jvmargs', '-Xmx3g -XX:MaxMetaspaceSize=768m')
+set('org.gradle.jvmargs', '-Xmx2560m -XX:MaxMetaspaceSize=768m')
+set('kotlin.daemon.jvmargs', '-Xmx768m')
 set('kotlin.compiler.execution.strategy', 'in-process')
 set('org.gradle.workers.max', '2')
 set('org.gradle.parallel', 'false')

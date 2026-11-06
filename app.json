@@ -2,7 +2,7 @@
   "expo": {
     "name": "My Notes",
     "slug": "mynotes",
-    "version": "1.1.1",
+    "version": "1.1.2",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
@@ -12,7 +12,7 @@
     ],
     "android": {
       "package": "de.aaron.mynotes",
-      "versionCode": 3,
+      "versionCode": 4,
       "adaptiveIcon": {
         "backgroundColor": "#1e9a5a",
         "foregroundImage": "./assets/android-icon-foreground.png",
